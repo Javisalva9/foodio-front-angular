@@ -1,0 +1,23 @@
+<h2 class="text-center m-5">Products List</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let product of products$ | async">
+            <td>{{product.name}}</td>
+            <td>
+                <button class="btn btn-primary me-1" [routerLink]="['edit/', product._id]">Edit</button>
+                <button class="btn btn-danger" (click)="deleteProduct(product._id || '')">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<input type="text" [(ngModel)]="newProduct">
+
+<button (click)="addNewProduct()">Set value</button>
